@@ -4,10 +4,9 @@ include_once('vendor/sonata-project/google-authenticator/src/GoogleAuthenticator
 include_once('vendor/sonata-project/google-authenticator/src/GoogleAuthenticator.php');
 include_once('vendor/sonata-project/google-authenticator/src/GoogleQrUrl.php');
 
-$g = new \google\Authenticator\GoogleAuthenticator();
+$g = new \Google\Authenticator\GoogleAuthenticator();
 
-$secret = 'GP5RFEAS8URBNN6TDOS';
-
+$secret = 'ABC123YXZ098LJ';
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +19,7 @@ $secret = 'GP5RFEAS8URBNN6TDOS';
 </head>
 <body>
     <h1>Registre a autenticação em 2 fatores</h1>
-    <img src="<?php echo $g->getUrl('lucassantos', 'autentica2fa.herokuapp.com', $secret) ?>">
+    <img src="<?php echo $g->getUrl('Autentica2FA', 'autentica2fa.herokuapp.com', $secret)?>" /><br><br>
     <a href="autenticar.php">Autentica</a>
 </body>
 </html>
