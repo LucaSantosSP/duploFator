@@ -21,5 +21,6 @@ $secret = 'GP5RFEAS8URBNN6TDOS';
 <body>
     <h1>Registre a autenticação em 2 fatores</h1>
     <img src="<?php echo $g->getUrl('lucassantos', 'formcaptcha5.herokuapp.com', $secret) ?>">
+    <a href="autenticar.php">Autentica</a>
 </body>
 </html>
