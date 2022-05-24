@@ -1,25 +1,56 @@
-<?php
-include_once('vendor/sonata-project/google-authenticator/src/FixedBitNotation.php');
-include_once('vendor/sonata-project/google-authenticator/src/GoogleAuthenticatorInterface.php');
-include_once('vendor/sonata-project/google-authenticator/src/GoogleAuthenticator.php');
-include_once('vendor/sonata-project/google-authenticator/src/GoogleQrUrl.php');
-
-$g = new \Google\Authenticator\GoogleAuthenticator();
-
-$secret = 'ABC123YXZ098LJ';
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Login</title>
+    <title>Formulário</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <h1>Registre a autenticação em 2 fatores</h1>
-    <img src="<?php echo $g->getUrl('Autentica2FA', 'autentica2fa.herokuapp.com', $secret)?>" /><br><br>
-    <a href="autenticar.php">Autentica</a>
+    <form action="duploFator.php" method="post">
+        <h1>Formulário de utilidade</h1>
+        <label for="iNome"><strong>Nome</strong></label><br>
+        <input class="infoP" type="text" name="nNome" id="iNome" placeholder="Ex: Fulano da Silva" required size="40"><br>
+
+        <label for="iEmail"><strong>E-mail</strong></label><br>
+        <input class="infoP" type="email" name="nEmail" id="iEmail" placeholder="Ex: Fulano@gmail.com" required size="40"><br>
+
+        <fieldset> 
+            <legend><strong>Deseja assinar o nosso guia?</strong></legend>
+            <label> <input type="radio" name="escolha" id="sim" checked>Sim</label>
+            <label> <input type="radio" name="escolha" id="nao">Não</label>
+        </fieldset>
+        <br>
+
+        <div class="g-recaptcha" data-sitekey="6LctN9EfAAAAAILh-h25sX8pbcbcN19sBIL_yKmh"></div><br>
+
+        <input type="submit" name="nEnviar" id="iEnviar" value="Enviar" onclick="return valida()">
+    </form>
+
+    <?php
+        if (isset($_POST['nEnviar'])){
+            if (!empty($_POST['g-recaptcha-response'])){
+                $url = "https://www.google.com/recaptcha/api/siteverify";
+                $secret = "6LctN9EfAAAAAPyuxHQVJsjJKaAhfVz8McuMqCDz";
+                $response = $_POST['g-recaptcha-response'];
+                $variaveis = "secret=".$secret."&response=".$response;
+
+                $chamada = curl_init($url);
+                curl_setopt( $chamada, CURLOPT_POST, 1);
+                curl_setopt( $chamada, CURLOPT_POSTFIELDS, $variaveis);
+                curl_setopt( $chamada, CURLOPT_FOLLOWLOCATION, 1);
+                curl_setopt( $chamada, CURLOPT_HEADER, 0);
+                curl_setopt( $chamada, CURLOPT_RETURNTRANSFER, 1);
+                $resposta = curl_exec($chamada);
+
+                $resultado = json_decode($resposta);
+                if($resultado->success == 1){
+                    
+                }
+            }
+        }
+    ?>
 </body>
 </html>
