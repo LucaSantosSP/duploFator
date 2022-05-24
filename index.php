@@ -17,12 +17,9 @@
         <label for="iEmail"><strong>E-mail</strong></label><br>
         <input class="infoP" type="email" name="nEmail" id="iEmail" placeholder="Ex: Fulano@gmail.com" required size="40"><br>
 
-        <fieldset> 
-            <legend><strong>Deseja assinar o nosso guia?</strong></legend>
-            <label> <input type="radio" name="escolha" id="sim" checked>Sim</label>
-            <label> <input type="radio" name="escolha" id="nao">Não</label>
-        </fieldset>
-        <br>
+
+        <input type="checkbox" name="escolha" id="sim" checked> 
+        <label for="name"><strong>Manter-me logado</strong></label><br>
 
         <div class="g-recaptcha" data-sitekey="6LctN9EfAAAAAILh-h25sX8pbcbcN19sBIL_yKmh"></div><br>
 

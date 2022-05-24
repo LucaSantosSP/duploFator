@@ -6,7 +6,7 @@ require "Authenticator.php";
     
 $Authenticator = new Authenticator();
 
-    $secret = $Authenticator->generateRandomSecret();
+    $secret = 'AG3BK4VJ2VJ5VD3F';
     $_SESSION['auth_secret'] = $secret;
 
 

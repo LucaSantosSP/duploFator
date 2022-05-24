@@ -9,7 +9,7 @@ $codigo_secreto = $_POST["codigosecreto"];
 $codigo_verificador = $_POST["codigo"];
 
 var_dump($codigo_secreto, $codigo_verificador);
-$resultado = $autenticador->checkCode($codigo_secreto, $codigo_verificador, 0);
+$resultado = $autenticador->checkCode($codigo_secreto, $codigo_verificador);
 var_dump($resultado);
 
 
