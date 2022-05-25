@@ -10,7 +10,7 @@ $Authenticator = new Authenticator();
     $_SESSION['auth_secret'] = $secret;
 
 
-$qrCodeUrl = $Authenticator->getQR('LucasCaio2FA', $_SESSION['auth_secret']);
+$qrCodeUrl = $Authenticator->getQR('autentica2fa', $_SESSION['auth_secret']);
 
 
 if (!isset($_SESSION['failed'])) {

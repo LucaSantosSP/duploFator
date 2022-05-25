@@ -13,27 +13,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela Login</title>
-    <script>
-        window.alert("Por favor faça a verificação em duas etapas!");
-    </script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/2fa.css">
 </head>
 <body>
     <form action="verificador.php" method="post" autoComplete="false">
-            <?php if ($_SESSION['failed']): ?>
-                <div class="alert alert-danger" role="alert">
-                            <strong>Oh snap!</strong> Invalid Code.
-                </div>
-                <?php   
-                    $_SESSION['failed'] = false;
-                ?>
-            <?php endif ?>
-                            
-                <img style="text-align: center;;" class="img-fluid" src="<?php   echo $qrCodeUrl ?>"><br><br>        
-                <input type="text" class="form-control" name="codigo" placeholder="******"><br> <br>  
 
-                <button type="submit" class="btn btn-md btn-primary">Vericar</button>
+        <h1>Dupla autenticação</h1>
+        <p>Insira o token gerado pelo aplicativo.</p>
+        <input type="text" class="form-control" name="codigo" id="iCodigo" placeholder="******"><br> <br>  
+        <div id="botoes">
+            <p id="voltar"><a href="index.php">Voltar</a></p>
+            <input type="submit" class="btn btn-md btn-primary" id="iEnviar" value="Vericar">
+        </div>
 
-                <input type="hidden" value="<?php echo $secret; ?>" name="codigosecreto">
+        <input type="hidden" value="<?php echo $secret; ?>" name="codigosecreto" >
     </form>
+
+    
 </body>
 </html>

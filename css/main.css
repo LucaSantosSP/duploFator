@@ -45,3 +45,11 @@ fieldset{
     background-color: #9c9c9c;
     color: #e0e0e0;
 }
+
+.QRCode{
+    height: 500px;
+}
+
+p{
+    margin-bottom: 15px;
+}

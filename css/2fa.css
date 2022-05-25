@@ -1,0 +1,15 @@
+h1{
+    margin-right: 10px;
+}
+
+#iCodigo{
+    padding-right: 50px;
+}
+
+#botoes{
+    display: flex;
+}
+
+#voltar{
+    padding: 10px;
+}
